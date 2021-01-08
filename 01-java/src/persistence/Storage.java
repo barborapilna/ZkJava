@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package persistence;
 
 import java.io.File;
@@ -16,10 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author rodi0878
- */
 public class Storage {
     
     public void store(Object object) {
@@ -30,18 +21,18 @@ public class Storage {
         classfolder.mkdir();
         
         File objectfile = new File(classfolder + "/" + object.hashCode());
-        ObjectOutputStream oos = null;
+        ObjectOutputStream outputStream = null;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream(objectfile));
-        } catch (IOException ex) {
+            outputStream = new ObjectOutputStream(new FileOutputStream(objectfile));
+        } catch (IOException exception) {
         }
         try {
-            oos.writeObject(object);
-        } catch (IOException ex) {
+            outputStream.writeObject(object);
+        } catch (IOException exception) {
         }
         try {
-            oos.close();
-        } catch (IOException ex) {
+            outputStream.close();
+        } catch (IOException exception) {
         }
     }
     
@@ -62,23 +53,22 @@ public class Storage {
         File[] files = classfolder.listFiles();
         
         for (File file : files) {
-            ObjectInputStream ois = null;
+            ObjectInputStream inputStream = null;
             try {
-                ois = new ObjectInputStream(new FileInputStream(file));
+                inputStream = new ObjectInputStream(new FileInputStream(file));
             } catch (IOException ex) {
             }
             try {
-                list.add((T) ois.readObject());
+                list.add((T) inputStream.readObject());
             } catch (IOException ex) {
             } catch (ClassNotFoundException ex) {
             }
             try {
-                ois.close();
+                inputStream.close();
             } catch (IOException ex) {
             }
         }
         
         return list;
     }
-    
 }
