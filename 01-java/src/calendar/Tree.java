@@ -7,24 +7,6 @@ import java.util.function.BiConsumer;
 
 public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
 
-    @Override
-    public Iterator<E> iterator() {
-        List<E> list = new ArrayList<>();
-        BiConsumer<BiConsumer, Node<E>> tree = (biConsumer, node) -> {
-           if (node.left != null) {
-                biConsumer.accept(biConsumer, node.left);
-            }
-            list.add(node.data);
-
-            if (node.right != null) {
-                biConsumer.accept(biConsumer, node.right);
-            }
-        };
-
-        tree.accept(tree, root);
-        return list.iterator();
-    }
-
     private static class Node<E> {
 
         public Node<E> left;
@@ -161,6 +143,24 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
             }
         }
         return null;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        List<E> list = new ArrayList<>();
+        BiConsumer<BiConsumer, Node<E>> tree = (biConsumer, node) -> {
+            if (node.left != null) {
+                biConsumer.accept(biConsumer, node.left);
+            }
+            list.add(node.data);
+
+            if (node.right != null) {
+                biConsumer.accept(biConsumer, node.right);
+            }
+        };
+
+        tree.accept(tree, root);
+        return list.iterator();
     }
 
     @Override
