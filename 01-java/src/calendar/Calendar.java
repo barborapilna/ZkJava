@@ -1,5 +1,9 @@
 package calendar;
 
+import event.E;
+import event.Event;
+import tree.Tree;
+
 import java.util.Date;
 import java.util.Iterator;
 

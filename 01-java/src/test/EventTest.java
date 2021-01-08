@@ -1,5 +1,6 @@
-package calendar;
+package test;
 
+import event.Event;
 import org.junit.Test;
 import java.util.Date;
 

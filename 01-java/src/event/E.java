@@ -1,4 +1,4 @@
-package calendar;
+package event;
 
 import java.util.Date;
 import java.util.HashSet;
