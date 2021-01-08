@@ -48,13 +48,13 @@ public class EventTest {
     @Test
     public void testEqualsNotSame() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        String firstdate = "02-04-2013 11:35:42";
-        String seconddate = "02-04-2015 01:35:42";
+        String firstDate = "02-04-2013 11:35:42";
+        String secondDate = "02-04-2015 01:35:42";
         Date firstNewDate = new Date();
         Date secondNewDate = new Date();
         try {
-            firstNewDate = dateFormat.parse(firstdate);
-            secondNewDate = dateFormat.parse(seconddate);
+            firstNewDate = dateFormat.parse(firstDate);
+            secondNewDate = dateFormat.parse(secondDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
