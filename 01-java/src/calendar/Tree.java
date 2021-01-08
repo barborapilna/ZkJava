@@ -10,19 +10,18 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         List<E> list = new ArrayList<>();
-        BiConsumer<BiConsumer, Node<E>> cf = (f, c) -> {
-           if (c.left != null) {
-                f.accept(f, c.left);
+        BiConsumer<BiConsumer, Node<E>> tree = (biConsumer, node) -> {
+           if (node.left != null) {
+                biConsumer.accept(biConsumer, node.left);
             }
-            list.add(c.data);
+            list.add(node.data);
 
-            
-            if (c.right != null) {
-                f.accept(f, c.right);
+            if (node.right != null) {
+                biConsumer.accept(biConsumer, node.right);
             }
         };
 
-        cf.accept(cf, root);
+        tree.accept(tree, root);
         return list.iterator();
     }
 
@@ -32,9 +31,6 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
         public Node<E> right;
         public E data;
 
-        public Node() {
-        }
-
         public Node(E data) {
             this.data = data;
         }
@@ -43,10 +39,7 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
         public String toString() {
             return "Node{" + "left=" + left + ", right=" + right + ", data=" + data + '}';
         }
-
     }
-
-    
 
     public Tree() {
     }
@@ -150,7 +143,6 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
                 traveller = traveller.right;
             }
         }
-
         return false;
     }
 
@@ -168,7 +160,6 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
                 traveller = traveller.right;
             }
         }
-
         return null;
     }
 
@@ -176,5 +167,4 @@ public class Tree<E extends Comparable<? super E>> implements Iterable<E> {
     public String toString() {
         return "Tree{" + "root=" + root + '}';
     }
-
 }
