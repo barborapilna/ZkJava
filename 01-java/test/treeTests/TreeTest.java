@@ -1,4 +1,4 @@
-package test;
+package treeTests;
 
 import static org.junit.Assert.*;
 
