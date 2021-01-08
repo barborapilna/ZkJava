@@ -8,10 +8,6 @@ import static org.junit.Assert.*;
 public class EventTest {
 
     @Test
-    public void getDate() {
-    }
-
-    @Test
     public void compareTo() {
         Event firstEvent = new Event(new Date(117, 6, 1), "1-4");
         Event secondEvent = new Event(new Date(117, 6, 1), "1-4");
@@ -20,14 +16,18 @@ public class EventTest {
     }
 
     @Test
-    public void testEquals() {
+    public void testEqualsSame() {
+        Event firstEvent = new Event(new Date(117, 6, 1), "1-4");
+        Event secondEvent = new Event(new Date(117, 6, 1), "1-4");
+
+        assertEquals(firstEvent, secondEvent);
     }
 
     @Test
-    public void testHashCode() {
-    }
+    public void testEqualsNotSame() {
+        Event firstEvent = new Event(new Date(117, 5, 1), "1-4");
+        Event secondEvent = new Event(new Date(117, 6, 1), "1-4");
 
-    @Test
-    public void testToString() {
+        assertNotEquals(firstEvent, secondEvent);
     }
 }
