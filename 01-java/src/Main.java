@@ -22,28 +22,28 @@ public class Main {
          */
 
         Storage storage = new Storage();
-        storage.store(new Event(new Date(117, 6, 1), "1-4"));
-        storage.store(new Event(new Date(117, 7, 1), "1-4"));
-        storage.unstore(new Event(new Date(117, 6, 1), "1-4"));
+        storage.store(new Event(new Date(), "1-4"));
+        storage.store(new Event(new Date(), "1-4"));
+        storage.unstore(new Event(new Date(), "1-4"));
 
         List<Event> eventList = storage.load(Event.class);
         System.out.println(eventList);
         System.out.println("");
 
         Calendar calendar = new Calendar();
-        calendar.addEv(new Event(new Date(117, 6, 1), "1-1"));
-        calendar.addEv(new Event(new Date(117, 6, 2), "2-1"));
-        calendar.addEv(new Event(new Date(117, 6, 3), "3-1"));
-        calendar.addEv(new Event(new Date(117, 6, 1), "1-2"));
-        calendar.addEv(new Event(new Date(117, 6, 1), "1-3"));
-        calendar.addEv(new Event(new Date(117, 6, 1), "1-4"));
+        calendar.addEv(new Event(new Date(), "1-1"));
+        calendar.addEv(new Event(new Date(), "2-1"));
+        calendar.addEv(new Event(new Date(), "3-1"));
+        calendar.addEv(new Event(new Date(), "1-2"));
+        calendar.addEv(new Event(new Date(), "1-3"));
+        calendar.addEv(new Event(new Date(), "1-4"));
 
         for (E element : calendar) {
             System.out.println(element.date);
             System.out.println(element.events);
         }
 
-        calendar.DeleteAll(new Date(117, 6, 1));
+        calendar.DeleteAll(new Date());
         System.out.println("");
 
         for (E element : calendar) {
